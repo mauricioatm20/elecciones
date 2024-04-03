@@ -1,13 +1,20 @@
 .miclase{
     margin: 0 auto;
     width: 50%;
+
 }
 .elec{
     margin: 0 auto;
     width: 50%;
-    padding: 100px;
+    padding: 50px;
+    font-family: "cursive";
+
 }
+
 body {
     background: white url("./img/elecciones-1.jpg");
     background-size: cover;
+}
+.registro{
+    font-family: cursive;
 }

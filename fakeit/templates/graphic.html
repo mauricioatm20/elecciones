@@ -12,24 +12,26 @@
 </head>
 <body class="fondo">
 <div class="miclase">
-    
+
     <h1 class="elec"> ELECCIONES 2024</h1>
-        <img src="data:image/png;base64,{{ graph }}" alt="data"/>
+    <img src="data:image/png;base64,{{ graph }}" alt="data"/>
     
-    <h1>Registro de Persona</h1>
+    <h1 class="registro">Registro de Persona</h1>
       <form action="{% url 'fakeit:guardar_persona' %}" method="post">
         {% csrf_token %}
         <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre"><br><br>
+        <input type="text" id="Nombre" name="nombre"><br><br>
         <label for="apellido">Apellido:</label>
         <input type="text" id="apellido" name="apellido"><br><br>
         <label for="partido">Partido político:</label>
         <select id="partido" name="partido">
+            <option value="">Elige un partido </option>
             <option value="Partido1">Partido 1</option>
             <option value="Partido2">Partido 2</option>
             <option value="Partido3">Partido 3</option>
             <option value="Partido4">Partido 4</option>
         </select><br><br>
+      
         <input type="submit" value="Guardar">
         {% if messages %}
         <ul>
@@ -37,7 +39,7 @@
                 <li>{{ message }}</li>
             {% endfor %}
         </ul>
-    {% endif %}
+        {% endif %}
     </form>
 </div>
 </body>

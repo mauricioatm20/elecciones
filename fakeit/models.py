@@ -7,7 +7,3 @@ class Persona(models.Model):
     partido = models.CharField(max_length=100,
                                choices=[("Partido1", "Partido 1"), ("Partido2", "Partido 2"), ("Partido3", "Partido 3"),
                                         ("Partido4", "Partido 4")])
-
-class Resultados(models.Model):
-        persona = models.ForeignKey(Persona, on_delete=models.CASCADE)
-        votos = models.IntegerField()
