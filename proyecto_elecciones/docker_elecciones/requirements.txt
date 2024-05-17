@@ -1,0 +1,6 @@
+Django>=5.0.4
+mysqlclient>=2.2.4
+Matplotlib>=3.8.4
+NumPy>=1.26.4
+pandas>=2.2.1
+Pillow

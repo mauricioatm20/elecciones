@@ -1,0 +1,35 @@
+networks:
+  front:
+    ipam:
+      config:
+        - subnet: 172.31.0.0/25
+
+services:
+  django:
+    build: ./proyecto_elecciones/docker_elecciones
+    command: >
+      sh -c " 
+      python manage.py runserver 0.0.0.0:8000"
+    networks:
+      front:
+        ipv4_address: 172.31.0.67
+    ports:
+      - "8000:8000"
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  mysql:
+    build: ./proyecto_elecciones/docker_mysql
+    volumes:
+      - /Users/mauricio/elecciones/db_data:/var/lib/mysql
+      - /Users/mauricio/elecciones/load_data/elecciones.sql:/docker-entrypoint-initdb.d/elecciones.sql
+    networks:
+      front:
+        ipv4_address: 172.31.0.64
+    ports:
+      - "3307:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 10
